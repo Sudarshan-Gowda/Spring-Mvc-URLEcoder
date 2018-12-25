@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Spring Mvc Thymeleaf-Registration with Login</title>
+<link rel="icon" th:href="@{/resources/images/sudarshan-logo.png}" />
+<style>
+.alert {
+	padding: 4px;
+	background-color: #f44336;
+	color: white;
+}
+
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.closebtn:hover {
+	color: black;
+}
+</style>
+</head>
+<body>
+	<div id="fullpage">
+		<div class="header">
+			<div th:substituteBy="basic/header" th:remove="tag"></div>
+		</div>
+
+
+		<div id="star-wrapper">
+
+			<div class="content-header">
+				<marquee scrollamount="12" onblur="red" translate="yes">
+					<span>Basic Example of Spring MVC URL Ecoder & Decoder</span>
+				</marquee>
+			</div>
+
+
+			<div th:substituteBy="messages/server-message" th:remove="tag"
+				class="alert alert-success"></div>
+
+			<div>
+
+
+				<div class="row">
+
+					<!-- Encoder Starts -->
+
+					<div class="form-group col-md-12">
+						<div class="star-reg-header">URL Encoder</div>
+					</div>
+
+					<div class="star-reg-body">
+
+						<form class="form-horizontal col-sm-12" method="POST"
+							th:action="@{/urlEncoder}" th:object="${pageForm}">
+
+							<div class="form-group col-sm-10">
+								<label class="required">Input Data: </label>
+								<textarea type="text" class="form-control required"
+									th:field="*{encodeInput}" required="required"></textarea>
+							</div>
+
+							<div class="form-group col-md-12">
+								<label class="col-sm-2"></label>
+								<div class="col-sm-10">
+									<button type="submit" class="btn btn-info">Encrypt
+										Data</button>
+								</div>
+							</div>
+
+							<div class="form-group col-sm-10">
+								<label class="required">Result Data: </label>
+								<textarea type="text" class="form-control required"
+									th:field="*{encodeOutput}" required="required"
+									readonly="readonly"></textarea>
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+
+				<!-- Encoder Ends -->
+
+				<!-- Decoder Starts -->
+
+				<div class="row">
+
+					<div class="urlDecoder" style="margin-top: 58px;">
+
+						<div class="form-group col-md-12">
+							<div class="star-reg-header">URL Decoder</div>
+						</div>
+
+						<div class="star-reg-body">
+
+							<form class="form-horizontal col-sm-12" method="POST"
+								th:action="@{/urlDecoder}" th:object="${pageForm}">
+
+								<div class="form-group col-sm-10">
+									<label class="required">Input Data: </label>
+									<textarea type="text" class="form-control required"
+										th:field="*{decodeInput}" required="required"></textarea>
+								</div>
+
+								<div class="form-group col-md-12">
+									<label class="col-sm-2"></label>
+									<div class="col-sm-10">
+										<button type="submit" class="btn btn-info">Decrypt
+											Data</button>
+									</div>
+								</div>
+
+								<div class="form-group col-sm-10">
+									<label class="required">Result Data: </label>
+									<textarea type="text" class="form-control required"
+										th:field="*{decodeOutput}" required="required"
+										readonly="readonly"></textarea>
+								</div>
+
+							</form>
+
+						</div>
+					</div>
+					<!-- Decoder Ends -->
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="star-body-form">
+		<div class="col-lg-12 col-sm-12 col-xs-12 copyrights">
+			<div th:substituteBy="basic/footer" th:remove="tag"></div>
+		</div>
+	</div>
+</body>
+</html>
